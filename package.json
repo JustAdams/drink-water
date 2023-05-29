@@ -3,7 +3,7 @@
   "displayName": "Drink Water - Stay Hydrated",
   "description": "Subtle reminder notification for you to drink some water. Stay hydrated while you work!",
   "icon": "resources/logo/drinkwaterlogo_128.png",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "adamsjustin",
   "engines": {
     "vscode": "^1.78.0"
