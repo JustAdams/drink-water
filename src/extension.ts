@@ -14,6 +14,11 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('drink-water.startReminder', async () => {
 		console.log("Starting Drink Water...");
 
+		if (intervalNumber !== undefined) {
+			vscode.window.showErrorMessage('DrinkWater: You already have a reminder!');
+			return;
+		}
+
 		let userInput = await vscode.window.showInputBox({
 			placeHolder: "Time in minutes",
 			prompt: "How often do you want a water reminder?"
@@ -21,23 +26,22 @@ export function activate(context: vscode.ExtensionContext) {
 
 		// Basic error handling
 		if (userInput === undefined) {
-			vscode.window.showErrorMessage('You must enter a time interval in minutes.');
+			vscode.window.showErrorMessage('DrinkWater: You must enter a time interval in minutes.');
 		}
 		// Convert and error check
 		let timeInMinutes = parseFloat(userInput!) * 60000;
 		if (Number.isNaN(timeInMinutes)) {
-			vscode.window.showErrorMessage(`Invalid time interval given: ${userInput}`);
+			vscode.window.showErrorMessage(`DrinkWater: Invalid time interval given: ${userInput}`);
 		}
 
 		// Set the reminder interval
 		console.log(`Sending a drink water reminder every ${userInput} minutes.`);
 		intervalNumber = setInterval(displayWaterReminder, timeInMinutes);
 	});
-	
+
 	context.subscriptions.push(disposable);
 }
-
-// This method is called when your extension is deactivated
+	
 export function deactivate() {
 	console.log(`Stopping interval ${intervalNumber}`);
 	clearInterval(intervalNumber);
@@ -45,6 +49,5 @@ export function deactivate() {
 
 // This method creates the notification window for the drink water reminder
 function displayWaterReminder() {
-	console.log("Sending reminder...");
-	vscode.window.showInformationMessage("It's time to drink water!");
+	vscode.window.showInformationMessage("DrinkWater: It's time to drink water!");
 }
