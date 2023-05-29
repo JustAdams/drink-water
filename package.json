@@ -2,6 +2,7 @@
   "name": "drink-water",
   "displayName": "Drink Water",
   "description": "Subtle reminder notification for you to drink some water. Stay hydrated while you work!",
+  "icon": "resources/logo/drinkwaterlogo_128.png",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.78.0"
@@ -9,13 +10,26 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "health",
+    "hydration",
+    "reminder"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JustAdams/drink-water"
+  },
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "drink-water.startReminder",
-        "title": "Start Drink Water"
+        "title": "Start Drink Water",
+        "icon": {
+          "light": "resources/logo/drinkwaterlogo_16.png",
+          "dark": "resources/logo/drinkwaterlogo_16.png"
+        }
       }
     ]
   },
