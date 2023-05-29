@@ -6,7 +6,7 @@ Staying hydrated is extremely important, but it's easy to forget to regularly dr
 
 Enable hydration reminder with a given interval:
 
-![Starting a Hydration Reminder](resources\gif\start-reminder.gif)
+![Starting a Hydration Reminder](https://github.com/JustAdams/drink-water/blob/main/resources/gif/start-reminder.gif?raw=true)
 
 
 ## Known Issues
