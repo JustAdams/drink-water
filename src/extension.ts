@@ -14,29 +14,38 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('drink-water.startReminder', async () => {
 		console.log("Starting Drink Water...");
 
-		if (intervalNumber !== undefined) {
-			vscode.window.showErrorMessage('DrinkWater: You already have a reminder!');
-			return;
-		}
-
 		let userInput = await vscode.window.showInputBox({
 			placeHolder: "Time in minutes",
 			prompt: "How often do you want a water reminder?"
 		});
 
 		// Basic error handling
-		if (userInput === undefined) {
+		while (userInput === undefined) {
 			vscode.window.showErrorMessage('DrinkWater: You must enter a time interval in minutes.');
+			userInput = await vscode.window.showInputBox({
+				placeHolder: "Time in minutes",
+				prompt: "How often do you want a water reminder?"
+			});
 		}
 		// Convert and error check
 		let timeInMinutes = parseFloat(userInput!) * 60000;
-		if (Number.isNaN(timeInMinutes)) {
+		while (Number.isNaN(timeInMinutes)) {
 			vscode.window.showErrorMessage(`DrinkWater: Invalid time interval given: ${userInput}`);
+			userInput = await vscode.window.showInputBox({
+				placeHolder: "Time in minutes",
+				prompt: "How often do you want a water reminder?"
+			});
 		}
 
 		// Set the reminder interval
+		if (intervalNumber !== undefined) {
+			console.log('Resetting the current reminder interval.');
+			clearInterval(intervalNumber);
+		}
+
 		console.log(`Sending a drink water reminder every ${userInput} minutes.`);
 		intervalNumber = setInterval(displayWaterReminder, timeInMinutes);
+		vscode.window.showInformationMessage(`DrinkWater: Reminding you to hydrate every ${userInput} minutes.!`);
 	});
 
 	context.subscriptions.push(disposable);
@@ -49,5 +58,5 @@ export function deactivate() {
 
 // This method creates the notification window for the drink water reminder
 function displayWaterReminder() {
-	vscode.window.showInformationMessage("DrinkWater: It's time to drink water!");
+	vscode.window.showInformationMessage("🥤 DrinkWater: It's time to drink water! 🥤");
 }

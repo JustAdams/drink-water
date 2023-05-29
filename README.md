@@ -1,6 +1,6 @@
 # drink-water README
 
-This is the README for your extension "drink-water". After writing up a brief description, we recommend including the following sections.
+Staying hydrated is extremely important, but it's easy to forget to regularly drink water while you're working. This extension will allow you to set a reminder to an interval you decide in order to provide a non-intrusive reminder that you should drink some water.
 
 ## Features
 
