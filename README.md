@@ -6,7 +6,7 @@ Staying hydrated is extremely important, but it's easy to forget to regularly dr
 
 Enable hydration reminder with a given interval:
 
-\!\[feature X\]\(images/feature-x.png\)
+![Starting a Hydration Reminder](resources\gif\start-reminder.gif)
 
 
 ## Known Issues
