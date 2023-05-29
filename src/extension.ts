@@ -19,22 +19,17 @@ export function activate(context: vscode.ExtensionContext) {
 			prompt: "How often do you want a water reminder?"
 		});
 
-		// Basic error handling
-		while (userInput === undefined) {
-			vscode.window.showErrorMessage('DrinkWater: You must enter a time interval in minutes.');
-			userInput = await vscode.window.showInputBox({
-				placeHolder: "Time in minutes",
-				prompt: "How often do you want a water reminder?"
-			});
+		console.log(userInput);
+
+		// Basic error handling. Exit out if invalid input given.
+		if (userInput === undefined) {
+			return;
 		}
 		// Convert and error check
 		let timeInMinutes = parseFloat(userInput!) * 60000;
-		while (Number.isNaN(timeInMinutes)) {
+		if (Number.isNaN(timeInMinutes)) {
 			vscode.window.showErrorMessage(`DrinkWater: Invalid time interval given: ${userInput}`);
-			userInput = await vscode.window.showInputBox({
-				placeHolder: "Time in minutes",
-				prompt: "How often do you want a water reminder?"
-			});
+			return;
 		}
 
 		// Set the reminder interval
