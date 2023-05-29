@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "drink-water.helloWorld",
-        "title": "Hello World"
+        "command": "drink-water.startReminder",
+        "title": "Start Drink Water"
       }
     ]
   },
