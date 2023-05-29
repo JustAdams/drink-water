@@ -40,7 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 		console.log(`Sending a drink water reminder every ${userInput} minutes.`);
 		intervalNumber = setInterval(displayWaterReminder, timeInMinutes);
-		vscode.window.showInformationMessage(`DrinkWater: Reminding you to hydrate every ${userInput} minutes.!`);
+		vscode.window.showInformationMessage(`DrinkWater: Reminding you to hydrate every ${userInput} minutes!`);
 	});
 
 	context.subscriptions.push(disposable);
